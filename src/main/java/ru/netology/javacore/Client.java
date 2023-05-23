@@ -14,11 +14,12 @@ import java.util.Scanner;
 public class Client {
     private final static int PORT = 8989;
     private final static String LOCALHOST = "127.0.0.1";
-    public static void main(String[] args){
-        try(Socket socket = new Socket(LOCALHOST, PORT);
-        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        Scanner scanner = new Scanner(System.in)){
+
+    public static void main(String[] args) {
+        try (Socket socket = new Socket(LOCALHOST, PORT);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             Scanner scanner = new Scanner(System.in)) {
             System.out.println("Список доступных команд :");
             System.out.println("ADD + 'В это поле введите событие, которое хотите добавить в список'");
             System.out.println("REMOVE + 'В это поле введите событие, которое хотите удалить'");
@@ -26,9 +27,9 @@ public class Client {
             CreateAnswerObject object = new CreateAnswerObject();
             String stringRequest = scanner.nextLine();
             String[] answerArray;
-            if(stringRequest.contains(" ")){
+            if (stringRequest.contains(" ")) {
                 answerArray = stringRequest.split(" ", 2);
-            }else{
+            } else {
                 answerArray = new String[]{stringRequest, null};
             }
             out.println(object.write(new Answer(answerArray[0], answerArray[1])) + "\n");

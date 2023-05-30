@@ -2,13 +2,16 @@ package ru.netology.javacore.typeofcommand;
 
 import ru.netology.javacore.Todos;
 
-public class typeAdd implements Command{
+public class typeAdd implements Command {
     private Todos todos;
-    public typeAdd(Todos todos){
+
+    public typeAdd(Todos todos) {
         this.todos = todos;
     }
+
     private final String TYPE = "ADD";
-    public String getTYPE(){
+
+    public String getTYPE() {
         return TYPE;
     }
 

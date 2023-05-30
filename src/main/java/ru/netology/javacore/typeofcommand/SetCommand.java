@@ -8,7 +8,8 @@ public class SetCommand {
     private ArrayList<Command> commands = new ArrayList<>();
     private ArrayList<CommandWithoutParameters> commandWithoutParameters = new ArrayList<>();
     private Todos todos;
-    public SetCommand(Todos todos){
+
+    public SetCommand(Todos todos) {
         this.todos = todos;
         commands.add(new typeAdd(todos));
         commands.add(new typeRemove(todos));
@@ -16,15 +17,15 @@ public class SetCommand {
     }
 
     public String setCommand(String command, String task) {
-        if(task != null) {
+        if (task != null) {
             for (int i = 0; i < commands.size(); i++) {
                 if (commands.get(i).getTYPE().equals(command)) {
                     return commands.get(i).command(task);
                 }
             }
-        }else{
-            for(int i = 0; i < commands.size(); i++){
-                if(commandWithoutParameters.get(i).getTYPE().equals(command)){
+        } else {
+            for (int i = 0; i < commands.size(); i++) {
+                if (commandWithoutParameters.get(i).getTYPE().equals(command)) {
                     return commandWithoutParameters.get(i).command();
                 }
             }
